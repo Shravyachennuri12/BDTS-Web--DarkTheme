@@ -129,32 +129,32 @@ import AnimatedSection from '../ui/AnimatedSection';
 
 const timelineItems = [
   {
-    year: '2010',
+    year: '2020',
     title: 'Company Founded',
     description: 'Basel Dynamics was established with a vision to transform the IT landscape through innovative solutions.'
   },
   {
-    year: '2013',
+    year: '2021',
     title: 'First Major Product Launch',
     description: 'Released our flagship database solution, BaselDB, which quickly gained recognition for its performance.'
   },
   {
-    year: '2015',
+    year: '2022',
     title: 'International Expansion',
     description: 'Expanded operations to Europe and Southeast Asia, establishing global presence with offices in London and Singapore.'
   },
   {
-    year: '2018',
+    year: '2023',
     title: 'Cloud Services Division',
     description: 'Launched our cloud services division, offering comprehensive solutions for businesses of all sizes.'
   },
   {
-    year: '2021',
+    year: '2023',
     title: 'AI Innovation Center',
     description: 'Established our AI Research & Innovation Center to develop cutting-edge machine learning solutions.'
   },
   {
-    year: '2023',
+    year: '2024',
     title: 'Strategic Partnerships',
     description: 'Formed strategic partnerships with leading global tech companies to expand our service offerings.'
   }
@@ -184,7 +184,7 @@ const About: React.FC = () => {
               Provide the Best Easy Solution for Your IT Problem. Our team is dedicated to understanding your challenges, diving deep into them, and using our expertise to craft tailored solutions.
             </p>
             <p className="text-gray-300">
-              Founded in 2010, Basel Dynamics emerged from a vision to create technology solutions that truly empower businesses. What began as a small team of innovative engineers has grown into a global technology leader serving clients across industries.
+              Founded in 2020, Basel Dynamics emerged from a vision to create technology solutions that truly empower businesses. What began as a small team of innovative engineers has grown into a global technology leader serving clients across industries.
             </p>
             <p className="text-gray-300 mt-4">
               Our journey has been defined by continuous innovation, unwavering commitment to quality, and a deep understanding of evolving business needs in the digital age.
