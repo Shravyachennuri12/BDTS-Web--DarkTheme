@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
+
 
 const heroVariants = {
   hidden: { opacity: 0 },
@@ -60,13 +62,22 @@ const Home: React.FC = () => {
             >
               Explore Our Solutions
             </motion.button>
-            <motion.button
-              className="btn btn-outline"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Us
-            </motion.button>
+<Link
+  to="contact"
+  spy={true}
+  smooth={true}
+  offset={-70}
+  duration={700}
+>
+  <motion.button
+    className="btn btn-outline"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Contact Us
+  </motion.button>
+</Link>
+
           </motion.div>
         </motion.div>
       </div>

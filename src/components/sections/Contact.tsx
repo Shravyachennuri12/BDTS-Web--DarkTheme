@@ -81,8 +81,7 @@ const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Call Us</h4>
                     <p className="text-gray-300">
-                      +91 (80) 1234 5678<br />
-                      +91 (80) 8765 4321
+                      +91 (88) 85525531<br />
                     </p>
                   </div>
                 </div>
@@ -121,7 +120,7 @@ const Contact: React.FC = () => {
                       name="name"
                       required
                       className="w-full bg-darkTertiary border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="Rajcharan Agam"
+                      placeholder="BDTS"
                     />
                   </div>
                   <div>
