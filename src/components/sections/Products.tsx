@@ -1,7 +1,9 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from 'react';
 import { Database, Cloud, Smartphone, PieChart } from 'lucide-react';
 import AnimatedSection from '../ui/AnimatedSection';
 import ProductCard from '../ui/ProductCard';
+import Modal from '../ui/Modal';
 
 const products = [
   {
@@ -31,6 +33,8 @@ const products = [
 ];
 
 const Products: React.FC = () => {
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+
   return (
     <section id="products" className="section bg-dark">
       <div className="container">
@@ -51,11 +55,21 @@ const Products: React.FC = () => {
                 title={product.title}
                 description={product.description}
                 imageSrc={product.imageSrc}
+                onExplore={() => setSelectedProduct(product)}
               />
             </AnimatedSection>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      <Modal
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        title={selectedProduct?.title || ''}
+        description={selectedProduct?.description || ''}
+        imageSrc={selectedProduct?.imageSrc || ''}
+      />
     </section>
   );
 };

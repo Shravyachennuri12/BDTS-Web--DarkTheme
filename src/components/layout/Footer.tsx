@@ -17,16 +17,16 @@ const Footer: React.FC = () => {
               Delivering innovative technology solutions that transform businesses and drive digital excellence.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61576002102301&mibextid=rS40aB7S9Ucbxw6v" className="text-gray-400 hover:text-primary-500 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+              <a href="https://x.com/Basel_DTSPL?t=pjOFFTOWzUuomDTHyNWeEw&s=09" className="text-gray-400 hover:text-primary-500 transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+              <a href="https://www.linkedin.com/company/baseldynamictechsolutions/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3B2ASt3pqTQ7OYRXKYXrWObw%3D%3D" className="text-gray-400 hover:text-primary-500 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+              <a href="https://www.instagram.com/basel_dynamic_tech_solutions?igsh=anUzM2x5NTQzbHBv" className="text-gray-400 hover:text-primary-500 transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary-500 mt-1 mr-3" />
                 <span className="text-gray-300">
-                  10th Floor,Suit.No:10, Gamma Block Sigma Soft Tech Park, Ramagondanahalli, Whitefield<br />
+                  6th Floor,Suit.No:10, Gamma Block Sigma Soft Tech Park, Ramagondanahalli, Whitefield<br />
                    Bengaluru, Karnataka 560066
 
                 </span>

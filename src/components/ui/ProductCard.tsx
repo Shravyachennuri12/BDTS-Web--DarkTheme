@@ -7,13 +7,15 @@ interface ProductCardProps {
   title: string;
   description: string;
   imageSrc: string;
+  onExplore: () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ 
   icon: Icon, 
   title, 
   description, 
-  imageSrc 
+  imageSrc,
+  onExplore
 }) => {
   return (
     <motion.div
@@ -37,6 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           className="btn btn-primary"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={onExplore}
         >
           Explore
         </motion.button>

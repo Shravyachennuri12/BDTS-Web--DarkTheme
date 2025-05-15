@@ -129,7 +129,7 @@ import AnimatedSection from '../ui/AnimatedSection';
 
 const timelineItems = [
   {
-    year: '2020',
+    year: '2021',
     title: 'Company Founded',
     description: 'Basel Dynamics was established with a vision to transform the IT landscape through innovative solutions.'
   },
@@ -154,7 +154,7 @@ const timelineItems = [
     description: 'Established our AI Research & Innovation Center to develop cutting-edge machine learning solutions.'
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'Strategic Partnerships',
     description: 'Formed strategic partnerships with leading global tech companies to expand our service offerings.'
   }

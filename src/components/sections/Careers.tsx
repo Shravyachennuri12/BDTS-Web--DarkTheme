@@ -1,7 +1,10 @@
+// src/pages/Careers.tsx
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
 import JobCard from '../ui/JobCard';
+import ApplicationModal from '../ui/ApplicationModal';
 
 const categories = ['All', 'Engineering', 'Design', 'Marketing', 'Operations'];
 
@@ -45,10 +48,22 @@ const jobs = [
 
 const Careers: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
-  
-  const filteredJobs = activeCategory === 'All' 
-    ? jobs 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedJobTitle, setSelectedJobTitle] = useState<string | undefined>(undefined);
+
+  const filteredJobs = activeCategory === 'All'
+    ? jobs
     : jobs.filter(job => job.category === activeCategory);
+
+  const openModal = (jobTitle?: string) => {
+    setSelectedJobTitle(jobTitle);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedJobTitle(undefined);
+  };
 
   return (
     <section id="careers" className="section bg-darkSecondary">
@@ -76,7 +91,7 @@ const Careers: React.FC = () => {
                     'Flexible work arrangements',
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <svg className="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="h-6 w-6 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
                       <span className="text-gray-300">{item}</span>
@@ -85,7 +100,7 @@ const Careers: React.FC = () => {
                 </ul>
               </div>
               <div>
-                <div 
+                <div
                   className="h-full rounded-lg overflow-hidden bg-cover bg-center"
                   style={{ backgroundImage: "url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600')" }}
                 />
@@ -100,8 +115,8 @@ const Careers: React.FC = () => {
               <motion.button
                 key={index}
                 className={`px-4 py-2 rounded-full transition-colors ${
-                  activeCategory === category 
-                    ? 'bg-primary-500 text-white' 
+                  activeCategory === category
+                    ? 'bg-primary-500 text-white'
                     : 'bg-darkTertiary text-gray-300 hover:bg-primary-500/20'
                 }`}
                 onClick={() => setActiveCategory(category)}
@@ -122,6 +137,7 @@ const Careers: React.FC = () => {
                 location={job.location}
                 type={job.type}
                 description={job.description}
+                onApplyClick={() => openModal(job.title)}
               />
             </AnimatedSection>
           ))}
@@ -131,11 +147,18 @@ const Careers: React.FC = () => {
           <p className="text-gray-300 mb-6">
             Don't see a position that matches your skills? We're always looking for exceptional talent!
           </p>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={() => openModal()}>
             Send Open Application
           </button>
         </AnimatedSection>
       </div>
+
+      {/* Application Form Modal */}
+      <ApplicationModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        jobTitle={selectedJobTitle}
+      />
     </section>
   );
 };
