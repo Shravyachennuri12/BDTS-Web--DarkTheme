@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    formData.append("access_key", "d0d94472-2e95-4310-897b-ff2f6bafe883"); // Replace with your Web3Forms access key
+    formData.append("access_key", "d0d94472-2e95-4310-897b-ff2f6bafe883");
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
@@ -25,7 +25,9 @@ const Contact: React.FC = () => {
     if (res.success) {
       console.log("Success", res);
       alert("Message sent successfully!");
-      event.currentTarget.reset();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } else {
       alert("Failed to send message. Please try again.");
     }
@@ -45,11 +47,9 @@ const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           <AnimatedSection direction="left">
-            {/* Contact Info Section */}
             <div className="bg-darkSecondary p-8 rounded-lg h-full">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-6">
-                {/* Location */}
                 <div className="flex items-start">
                   <div className="bg-primary-500/20 p-3 rounded-full mr-4">
                     <MapPin className="h-6 w-6 text-primary-500" />
@@ -62,7 +62,6 @@ const Contact: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                {/* Email */}
                 <div className="flex items-start">
                   <div className="bg-primary-500/20 p-3 rounded-full mr-4">
                     <Mail className="h-6 w-6 text-primary-500" />
@@ -75,7 +74,6 @@ const Contact: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                {/* Phone */}
                 <div className="flex items-start">
                   <div className="bg-primary-500/20 p-3 rounded-full mr-4">
                     <Phone className="h-6 w-6 text-primary-500" />
@@ -89,7 +87,6 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               </div>
-              {/* Social Media */}
               <div className="mt-8">
                 <h4 className="font-semibold mb-4">Follow Us</h4>
                 <div className="flex space-x-4">
@@ -110,7 +107,6 @@ const Contact: React.FC = () => {
           </AnimatedSection>
 
           <AnimatedSection direction="right">
-            {/* Contact Form */}
             <div className="bg-darkSecondary p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
               <form onSubmit={onSubmit}>
@@ -182,7 +178,6 @@ const Contact: React.FC = () => {
           </AnimatedSection>
         </div>
 
-        {/* Google Maps Embed */}
         <AnimatedSection className="mt-12">
           <div className="bg-darkSecondary p-2 rounded-lg overflow-hidden h-96">
             <iframe
