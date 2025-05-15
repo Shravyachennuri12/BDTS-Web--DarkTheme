@@ -2,6 +2,8 @@ import React from 'react';
 import { Code, Globe, Smartphone, Cloud, Database, Settings } from 'lucide-react';
 import AnimatedSection from '../ui/AnimatedSection';
 import ServiceCard from '../ui/ServiceCard';
+import { Link } from 'react-scroll';
+
 
 const services = [
   {
@@ -77,9 +79,19 @@ const Services: React.FC = () => {
           <p className="text-gray-300 max-w-2xl mx-auto mb-8">
             Our team of experts is ready to develop tailored solutions to address your specific business challenges. Let's discuss how we can help you achieve your goals.
           </p>
-          <button className="btn btn-primary">
-            Schedule a Consultation
-          </button>
+          
+          <Link
+  to="contact"
+  spy={true}
+  smooth={true}
+  offset={-70}
+  duration={700}
+>
+  <button className="btn btn-primary">
+    Schedule a Consultation
+  </button>
+</Link>
+
         </AnimatedSection>
       </div>
     </section>

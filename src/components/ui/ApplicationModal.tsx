@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useState } from 'react';
 
 interface ApplicationModalProps {
   isOpen: boolean;
@@ -7,85 +7,73 @@ interface ApplicationModalProps {
   jobTitle?: string;
 }
 
-const DropzoneField = ({
-  label,
-  required = false,
-  name,
-}: {
-  label: string;
-  required?: boolean;
-  name: string;
-}) => {
-  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({ name });
-
-  return (
-    <div className="mb-4">
-      <label className="block text-white mb-2">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      <div
-        {...getRootProps()}
-        className="border-dashed border-2 border-gray-400 rounded-md p-6 text-center text-white cursor-pointer hover:border-blue-400"
-      >
-        <input {...getInputProps({ name })} />
-        <div className="flex flex-col items-center justify-center">
-          <svg
-            className="w-10 h-10 text-gray-300 mb-2"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v6m0 0l-3-3m3 3l3-3M12 2a9.003 9.003 0 018.938 7.6"
-            />
-          </svg>
-          <p className="font-semibold">Upload a File</p>
-          <p className="text-sm text-gray-400">Drag and drop files here</p>
-        </div>
-      </div>
-      {acceptedFiles.length > 0 && (
-        <ul className="mt-2 text-sm text-gray-200">
-          {acceptedFiles.map((file) => (
-            <li key={file.name}>✅ {file.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
 const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onClose, jobTitle }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => setIsSubmitted(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        alert('Submission failed. Please try again.');
+      }
+    } catch (error) {
+      alert('Something went wrong.');
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-      <div className="bg-dark p-6 rounded-lg max-w-lg w-full shadow-lg max-h-[90vh] overflow-y-auto">
+      {/* ✅ Centered Success Popup */}
+      {isSubmitted && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="bg-white/10 backdrop-blur-md border border-white/30 p-6 rounded-xl text-center shadow-lg animate-fadeIn scale-100">
+            <div className="text-green-400 text-4xl mb-2">✔</div>
+            <p className="text-white text-lg font-semibold">Mail Sent Successfully!</p>
+          </div>
+        </div>
+      )}
+
+      <div className="bg-dark p-6 rounded-lg max-w-lg w-full shadow-lg max-h-[90vh] overflow-y-auto relative">
         <h3 className="text-xl font-bold mb-4 text-white">
           Apply for {jobTitle || 'an Open Position'}
         </h3>
 
         <form
-          action="https://api.web3forms.com/submit"
-          method="POST"
+          onSubmit={handleSubmit}
           encType="multipart/form-data"
           className="space-y-4"
         >
-          {/* Hidden Access Key */}
           <input type="hidden" name="access_key" value="d0d94472-2e95-4310-897b-ff2f6bafe883" />
 
           <input
@@ -127,9 +115,25 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onClose, jo
             className="w-full p-2 rounded bg-darkSecondary text-white"
             rows={4}
           />
+          <textarea
+            name="cover_letter"
+            placeholder="Write your Cover Letter here..."
+            className="w-full p-2 rounded bg-darkSecondary text-white"
+            rows={5}
+          />
 
-          <DropzoneField label="Upload Resume" required name="resume" />
-          <DropzoneField label="Any Other Documents to Upload" name="other_docs" />
+<div className="relative bg-white/10 backdrop-blur-md border border-yellow-500 p-5 rounded-xl shadow-xl text-center text-white">
+  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black text-xs px-3 py-1 rounded-full shadow-md">
+    NOTE
+  </div>
+  <p className="text-sm leading-relaxed">
+    Kindly send your updated resume to <br />
+    <span className="text-yellow-300 font-semibold text-base tracking-wide">
+      <a href="mailto:info@baseldtsolutions.com">info@baseldtsolutions.com</a>
+    </span>
+  </p>
+</div>
+
 
           <div className="flex justify-end gap-4 pt-2">
             <button

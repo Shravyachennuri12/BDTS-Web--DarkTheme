@@ -55,28 +55,37 @@ const Home: React.FC = () => {
           </motion.p>
           
           <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
-            <motion.button
-              className="btn btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Link
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={700}
             >
-              Explore Our Solutions
-            </motion.button>
-<Link
-  to="contact"
-  spy={true}
-  smooth={true}
-  offset={-70}
-  duration={700}
->
-  <motion.button
-    className="btn btn-outline"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    Contact Us
-  </motion.button>
-</Link>
+              <motion.button
+                className="btn btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Our Solutions
+              </motion.button>
+            </Link>
+
+            <Link
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={700}
+            >
+              <motion.button
+                className="btn btn-outline"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us
+              </motion.button>
+            </Link>
 
           </motion.div>
         </motion.div>

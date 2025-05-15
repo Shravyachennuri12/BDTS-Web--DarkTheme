@@ -134,22 +134,22 @@ const timelineItems = [
     description: 'Basel Dynamics was established with a vision to transform the IT landscape through innovative solutions.'
   },
   {
-    year: '2021',
+    year: '2022',
     title: 'First Major Product Launch',
     description: 'Released our flagship database solution, BaselDB, which quickly gained recognition for its performance.'
   },
   {
-    year: '2022',
+    year: '2023',
     title: 'International Expansion',
     description: 'Expanded operations to Europe and Southeast Asia, establishing global presence with offices in London and Singapore.'
   },
   {
-    year: '2023',
+    year: '2024',
     title: 'Cloud Services Division',
     description: 'Launched our cloud services division, offering comprehensive solutions for businesses of all sizes.'
   },
   {
-    year: '2023',
+    year: '2024',
     title: 'AI Innovation Center',
     description: 'Established our AI Research & Innovation Center to develop cutting-edge machine learning solutions.'
   },
